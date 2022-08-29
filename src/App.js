@@ -8,6 +8,7 @@ import Header from './Components/HomePage/Header/Header';
 import Navbar from './Components/HomePage/Navbar/Navbar';
 import Footer from './Components/HomePage/Footer/Footer';
 import BloodDonation from "./Components/BloodDonation/BloodDonation";
+import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
 export const UserContext = createContext();
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
         <Header></Header>
         <Navbar></Navbar>
         <Routes>
-          <Route exact path="/" element={<BloodDonation />} />
+          <Route exact path="/" element={<RegistrationForm />} />
           <Route path="/home" element={<Home />} />
         </Routes>
 
