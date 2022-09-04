@@ -1,6 +1,14 @@
 import "./Home.css";
 import React from "react";
 import Carousel from "../Carousel/Carousel";
+import { Link } from "react-router-dom";
+
+import countMember from "../../../images/membership.png"
+import countGQ from "../../../images/my-bg.png"
+import countSQ from "../../../images/student.png"
+import countBD from "../../../images/blood.png"
+import admin1 from "../../../images/khaled_1.png"
+import admin2 from "../../../images/khaled_2.png"
 
 const Home = () => {
     document.title = "Home"
@@ -14,28 +22,27 @@ const Home = () => {
                 {/* Administration Figures */}
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <div class="card h-100 border border-primary">
+                            <img src={admin1} class="card-img-top w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
+                            <div class="card-body text-center">
+                                <h5 class="card-title">MD Khaled Zinnurine</h5>
+                                <p class="card-text">Chairman of Qarze Hasana Foundation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card h-100 border border-primary">
+                            <img src={admin2} class="card-img-top w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
+                            <div class="card-body text-center">
+                                <h5 class="card-title">MD Khaled Zinnurine</h5>
+                                <p class="card-text">General Secretery of QHF</p>
                             </div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a short card.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
+                                <h5 class="card-title">Latest News</h5>
                                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                             </div>
                         </div>
@@ -54,20 +61,41 @@ const Home = () => {
                 {/* Our Mission and Vision and About Foundation */}
                 <div class="row row-cols-1 row-cols-md-2 g-4 my-4">
                     <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
+                        <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <h5 class="card-title border rounded-pill  text-center h-50">Our Mission and Vision</h5>
+                                <p class="card-text fst-italic fw-bold">
+                                    <h4 className="text-primary">Mission</h4>
+                                    We are fully commited to remove social economical enequality by establishing Islamic Economy.
+                                    <h4 className="text-primary">Vision</h4>
+                                    Allah says:
+                                    Who is the one who would give Allah the Qarz-e-Hasna (Good loan) so that Allah multiplies it for him many times? And it is Allah that decreases or increases, and to Him you shall return.
+                                    (2:245) <br /><br/>
+                                    If you advance the Qrz-e-Hasna (Good loan) to Allah, He will multiply it for you, and will forgive you. And Allah is Appreciative, Forbearing.
+                                    (64:17)<br/>
+                                    The example of those who spend in the way of Allah is just like a grain that produced seven ears, each ear having a hundred grains, and Allah multiplies for whom He wills. Allah is All-Embracing, All-Knowing.
+                                    (2:261) < br/>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card h-100">
-                            <img src="..." class="card-img-top" alt="..." />
+                        <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a short card.</p>
+                                <h5 class="card-title border rounded-pill  text-center h-50">About Foundation</h5>
+                                <p class="card-text fst-italic fw-bold"><br /><span className="text-primary">This is a Non Profitable Foundation that help the society to overcome economic weakness.</span><br /> <br />
+                                    <h4 className="text-primary">Our main concern is:</h4> 
+                                    <ol className="">
+                                        <li>Helping Poor People for the sake of Allah </li>
+                                        <li>Helping Interprenter to build up their business and then give back load</li>
+                                        <li>Helping poor student by providing monthl stipen</li>
+                                        <li>Helping Student giving student load before their semester started</li>
+                                        <li>Establishing a Blood Bank</li>
+                                        <li>Voluenteer activities during Natural Disesters</li>
+                                        <li>Keeping Environment Clean</li>
+                                        <li>Tree Plantaion</li>
+                                    </ol>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -75,33 +103,30 @@ const Home = () => {
 
                 {/* Fast and Easy Application Process */}
                 <div>
-                    <h2 className="text-center text-primary mb-2">Fast and Easy pplication Process </h2>
+                    <h2 className="text-center text-primary mb-2">Fast and Easy Application Process </h2>
                     <div className="mb-4">
                         <div class="row row-cols-1 row-cols-md-3 g-4">
                             <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
+                                <div class="card h-100 border border-primary">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <h5 class="card-title  text-center h-50">Step-1</h5>
+                                        <p class="card-text  border  bg-card-title text-center fw-bold fs-4">Choose Your Amount</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col ">
+                                <div class="card h-100 border border-primary ">
+                                    <div class="card-body">
+                                        <h5 class="card-title  text-center h-50">Step-2</h5>
+                                        <p class="card-text border bg-card-title text-center fw-bold fs-4">Wait for Approval</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
+                                <div class="card h-100 border border-primary">
                                     <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a short card.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                        <h5 class="card-title  text-center h-50">Step-3</h5>
+                                        <p class="card-text border bg-card-title  text-center fw-bold fs-4">Get your Cash</p>
                                     </div>
                                 </div>
                             </div>
@@ -112,43 +137,43 @@ const Home = () => {
                 {/* Counts from database */}
                 <div className="">
                     <div className="mb-3 d-flex justify-item-center">
-                        <button className="btn btn-success mx-auto">BE A MEMBER</button>
+                       <Link to='/register' className="mx-auto"><button className="btn btn-success mx-auto">BE A MEMBER</button></Link> 
                     </div>
                     <div className="mb-3">
                         <div class="row row-cols-1 row-cols-md-4 g-4">
                             <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
-                                    <div class="card-body">
+                                <div class="card h-100 border border-primary">
+                                    <img src={countMember} class="card-img-top w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
+                                    <div class="card-body text-center">
                                         <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text">No of Member</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
-                                    <div class="card-body">
+                                <div class="card h-100 border border-primary">
+                                    <img src={countGQ} class="card-img-top  w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
+                                    <div class="card-body text-center">
                                         <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a short card.</p>
+                                        <p class="card-text">General Qarze</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
-                                    <div class="card-body">
+                                <div class="card h-100 border border-primary">
+                                    <img src={countSQ} class="card-img-top  w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
+                                    <div class="card-body text-center">
                                         <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                                        <p class="card-text">Student Qarze</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col">
-                                <div class="card h-100">
-                                    <img src="..." class="card-img-top" alt="..." />
-                                    <div class="card-body">
+                                <div class="card h-100 border border-primary">
+                                    <img src={countBD} class="card-img-top  w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
+                                    <div class="card-body text-center">
                                         <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text">Blood Donations</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,8 @@
 import './App.css';
 import React from "react";
+import app from './firebase.init';
+import { getAuth } from "firebase/auth";
+
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext, useState } from "react";
@@ -11,6 +14,8 @@ import BloodDonation from "./Components/BloodDonation/BloodDonation";
 import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
 export const UserContext = createContext();
 
+const auth = getAuth(app);
+
 function App() {
   const [user, setUser] = useState({});
   return (
@@ -19,8 +24,10 @@ function App() {
         <Header></Header>
         <Navbar></Navbar>
         <Routes>
-          <Route exact path="/" element={<RegistrationForm />} />
+          <Route exact path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/register" element={<RegistrationForm />} />
+          <Route path="/blooddonate" element={<BloodDonation />} />
         </Routes>
 
 
