@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Navbar.css';
 import { Link } from "react-router-dom";
 
@@ -12,6 +12,14 @@ const Navbar = () => {
 
     const [userInfo, setUserInfo] = useState({})
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    useEffect(() => {
+        let item = JSON.parse(sessionStorage.getItem("userinfo"));
+        item?.uid && setUserInfo(item)
+        console.log(item)
+        item?.uid && setIsLoggedIn(true)
+    },[])
+
     const googleLogIn = () => {
 
         signInWithPopup(auth, provider)
@@ -24,6 +32,7 @@ const Navbar = () => {
                 console.log(user);
                 setUserInfo(user)
                 setIsLoggedIn(true)
+                sessionStorage.setItem("userinfo", JSON.stringify(user));
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
@@ -47,6 +56,7 @@ const Navbar = () => {
             console.log("ok done")
             setUserInfo({})
             setIsLoggedIn(false)
+            sessionStorage.clear();
         }).catch((error) => {
             // An error happened.
         });
@@ -92,7 +102,7 @@ const Navbar = () => {
                             <Link class="nav-link active" aria-current="page" to="/contact">Contact</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to=" " onClick={isLoggedIn ? googleSignOut : googleLogIn}> {isLoggedIn ? <img style={{ borderRadius: 20, height: 20, width: 20 }} src={userInfo.photoURL} /> : "Login"}</Link>
+                            <Link class="nav-link active" aria-current="page" to=" " onClick={isLoggedIn ? googleSignOut : googleLogIn}> {isLoggedIn ? <img style={{ borderRadius: 20, height: 20, width: 20 }} src={userInfo?.photoURL} /> : "Login"}</Link>
 
                         </li>
 

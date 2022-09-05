@@ -2,6 +2,7 @@ import './App.css';
 import React from "react";
 import app from './firebase.init';
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -15,6 +16,7 @@ import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
 export const UserContext = createContext();
 
 const auth = getAuth(app);
+export const db = getFirestore(app)
 
 function App() {
   const [user, setUser] = useState({});

@@ -13,6 +13,14 @@ const BloodDonation = () => {
     const handleDropdown2 = (value) => {
         setDropdownInfo2(value)
     }
+
+    const [memberInfo, setMemberInfo] = useState({})
+    const handleInput = (e) => {
+        setMemberInfo({ ...memberInfo, [e.target.name]: e.target.value })
+        console.log(memberInfo)
+
+    }
+
     return (
         <div className="px-2 py-2">
             <div id="carouselExampleDark" class="carousel carousel-light slide" data-bs-ride="carousel">
@@ -51,8 +59,8 @@ const BloodDonation = () => {
                         <li class="dropdown-item" onClick={() => handleDropdown2('Sylhet')}>Sylhet</li>
                     </ul>
 
-                    <input type="text" class="form-control" placeholder='Write District with correct spelling' />
-                    <input type="text" class="form-control" placeholder='Write Thana name with correct spelling' />
+                    <input type="text" name="district" onChange={(e) => handleInput(e)} class="form-control" placeholder='Write District with correct spelling' />
+                    <input type="text" name="thana" onChange={(e) => handleInput(e)} class="form-control" placeholder='Write Thana name with correct spelling' />
                     <button class="btn btn-outline-secondary" type="button" id=" ">Search Donor</button>
                 </div>
 

@@ -1,7 +1,9 @@
 import "./Home.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "../Carousel/Carousel";
 import { Link } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore"; 
+import { doc, getDoc } from "firebase/firestore";
 
 import countMember from "../../../images/membership.png"
 import countGQ from "../../../images/my-bg.png"
@@ -9,9 +11,75 @@ import countSQ from "../../../images/student.png"
 import countBD from "../../../images/blood.png"
 import admin1 from "../../../images/khaled_1.png"
 import admin2 from "../../../images/khaled_2.png"
+import { db } from "../../../App";
+
+const bloodInfo = [{
+    name: '',
+    
+}, {
+    
+}]
+
 
 const Home = () => {
     document.title = "Home"
+    const [members, setMembers] = useState([])
+    const [generalQarze, setGeneralQarze] = useState([])
+    const [studentQarze, setStudentQarze] = useState([])
+    const [bloodDonation, setBloodDonation] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const querySnapshot = await getDocs(collection(db, "members"));
+            // console.log(querySnapshot)
+            let list =[]
+            querySnapshot.forEach((doc) => {
+                // console.log(`${doc.id} => ${doc.data()}`, doc);
+                list.push(doc.data())
+            });
+            setMembers(list)
+
+
+            const querySnapshot1 = await getDocs(collection(db, "generalQarze"));
+            // console.log(querySnapshot)
+            let list1 = []
+            querySnapshot1.forEach((doc) => {
+                // console.log(`${doc.id} => ${doc.data()}`, doc);
+                list1.push(doc.data())
+            });
+            setGeneralQarze(list1)
+
+            const querySnapshot2 = await getDocs(collection(db, "studentQarze"));
+            // console.log(querySnapshot)
+            let list2 = []
+            querySnapshot2.forEach((doc) => {
+                // console.log(`${doc.id} => ${doc.data()}`, doc);
+                list2.push(doc.data())
+            });
+            setStudentQarze(list2)
+
+            const querySnapshot3 = await getDocs(collection(db, "bloodDonation"));
+            // console.log(querySnapshot)
+            let list3 = []
+            querySnapshot3.forEach((doc) => {
+                // console.log(`${doc.id} => ${doc.data()}`, doc);
+                list3.push(doc.data())
+            });
+            setBloodDonation(list3)
+        }
+        getData();
+
+    }, [])
+    
+    // useEffect(() => {
+    //     const getData = async () => {
+           
+    //     }
+    //     getData();
+    //     }, [])
+    // console.log(members)
+    
+
     return (
         <div>
             <div className="">
@@ -145,8 +213,8 @@ const Home = () => {
                                 <div class="card h-100 border border-primary">
                                     <img src={countMember} class="card-img-top w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
                                     <div class="card-body text-center">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">No of Member</p>
+                                        <h5 class="card-title">{members.length}</h5>
+                                        <p class="card-text">No of Member </p>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +222,7 @@ const Home = () => {
                                 <div class="card h-100 border border-primary">
                                     <img src={countGQ} class="card-img-top  w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
                                     <div class="card-body text-center">
-                                        <h5 class="card-title">Card title</h5>
+                                        <h5 class="card-title">{generalQarze.length}</h5>
                                         <p class="card-text">General Qarze</p>
                                     </div>
                                 </div>
@@ -163,7 +231,7 @@ const Home = () => {
                                 <div class="card h-100 border border-primary">
                                     <img src={countSQ} class="card-img-top  w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
                                     <div class="card-body text-center">
-                                        <h5 class="card-title">Card title</h5>
+                                        <h5 class="card-title">{studentQarze.length}</h5>
                                         <p class="card-text">Student Qarze</p>
                                     </div>
                                 </div>
@@ -172,7 +240,7 @@ const Home = () => {
                                 <div class="card h-100 border border-primary">
                                     <img src={countBD} class="card-img-top  w-50 h-50 rounded mx-auto d-block p-2" alt="..." />
                                     <div class="card-body text-center">
-                                        <h5 class="card-title">Card title</h5>
+                                        <h5 class="card-title">{bloodDonation.length}</h5>
                                         <p class="card-text">Blood Donations</p>
                                     </div>
                                 </div>
