@@ -1,9 +1,29 @@
 import './BloodDonation.css';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import bloodImage1 from "../../images/bloodCover.jpg";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from '../../App';
 
 const BloodDonation = () => {
 
+    const [donersInfo, setDonersInfo] = useState([])
+    const [ matchedResult, setMatchedResult] = useState([])
+
+    useEffect(() => {
+        const getData = async () => {
+            const querySnapshot = await getDocs(collection(db, "members"));
+            // console.log(querySnapshot)
+            let list = []
+            querySnapshot.forEach((doc) => {
+                // console.log(`${doc.id} => ${doc.data()}`, doc);
+                list.push(doc.data())
+            });
+            setDonersInfo(list)
+        }
+        getData()
+    }, [])
+
+    // console.log(donersInfo)
 
     const [dropDownInfo, setDropdownInfo] = useState('Blood Group')
     const handleDropdown = (value) => {
@@ -17,8 +37,26 @@ const BloodDonation = () => {
     const [memberInfo, setMemberInfo] = useState({})
     const handleInput = (e) => {
         setMemberInfo({ ...memberInfo, [e.target.name]: e.target.value })
-        console.log(memberInfo)
+        // console.log(memberInfo)
 
+    } 
+
+    const handleSearchBtn = () => {
+
+        const sbg = dropDownInfo.toLowerCase()
+        const sdiv = dropDownInfo2.toLowerCase()
+        const sdis = memberInfo?.district.toLowerCase()
+        
+        const matchedList = donersInfo.filter(doner => {
+            const dbg = doner.bloodGroup?.toLowerCase()
+            const ddis = doner.presentAddDistrict?.toLowerCase()
+            const ddiv = doner.presentAddDivision?.toLowerCase()
+         
+            return sbg === dbg && sdiv === ddiv && sdis === ddis
+        })
+        
+        console.log(matchedList)
+        setMatchedResult(matchedList)
     }
 
     return (
@@ -34,17 +72,17 @@ const BloodDonation = () => {
 
             <div className=' p-3 border border-success m-3'>
                 <div class="input-group">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{dropDownInfo ? dropDownInfo:''}</button>
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{dropDownInfo ? dropDownInfo : ''}</button>
                     <ul class="dropdown-menu">
-                        <li class="dropdown-item" onClick={()=>handleDropdown('A+')}>A+</li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('B+')}>B+</li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('AB+')}>AB+</li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('O+')}>O+</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('A+')}>A+</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('B+')}>B+</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('AB+')}>AB+</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('O+')}>O+</li>
                         <li> <hr class="dropdown-divider" /></li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('A-')}>A-</li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('B-')}>B-</li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('AB-')}>AB-</li>
-                        <li class="dropdown-item" onClick={()=>handleDropdown('O-')}>O-</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('A-')}>A-</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('B-')}>B-</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('AB-')}>AB-</li>
+                        <li class="dropdown-item" onClick={() => handleDropdown('O-')}>O-</li>
                     </ul>
 
                     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">{dropDownInfo2 ? dropDownInfo2 : ''}</button>
@@ -61,7 +99,7 @@ const BloodDonation = () => {
 
                     <input type="text" name="district" onChange={(e) => handleInput(e)} class="form-control" placeholder='Write District with correct spelling' />
                     <input type="text" name="thana" onChange={(e) => handleInput(e)} class="form-control" placeholder='Write Thana name with correct spelling' />
-                    <button class="btn btn-outline-secondary" type="button" id=" ">Search Donor</button>
+                    <button class="btn btn-outline-secondary" type="button" id=" " onClick={handleSearchBtn}>Search Donor</button>
                 </div>
 
 
@@ -78,78 +116,26 @@ const BloodDonation = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row"> Abdullah </th>
-                            <td>B+</td>
-                            <td>01863-332334</td>
-                            <td>Boalia, Rajshahi</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Jacobi</th>
-                            <td>A-</td>
-                            <td>01783-223322</td>
-                            <td>Talaimari, Rajshahi</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"> Khaled</th>
-                            <td>B+</td>
-                            <td>01745461819</td>
-                            <td>Natore</td>
-                        </tr>
+
+                        { matchedResult.length ?
+                            matchedResult.map(doner =>
+                                <tr key={doner._id}>
+                                    <th scope="row"> {doner.name} </th>
+                                    <td>{doner.bloodGroup} </td>
+                                    <td>{doner.contactNo}</td>
+                                    <td>{doner.presentAddThana},{doner.presentAddDistrict},{doner.presentAddDivision}</td>
+                                </tr>
+                            )
+                            :
+                            donersInfo.map(doner =>
+                                <tr key={doner._id}>
+                                    <th scope="row"> {doner.name} </th>
+                                    <td>{doner.bloodGroup} </td>
+                                    <td>{doner.contactNo}</td>
+                                    <td>{doner.presentAddThana},{doner.presentAddDistrict},{doner.presentAddDivision}</td>
+                                </tr>
+                            )
+                        }
                     </tbody>
                 </table>
 

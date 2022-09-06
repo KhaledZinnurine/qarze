@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Carousel from "../Carousel/Carousel";
 import { Link } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore"; 
-import { doc, getDoc } from "firebase/firestore";
 
 import countMember from "../../../images/membership.png"
 import countGQ from "../../../images/my-bg.png"
@@ -13,12 +12,6 @@ import admin1 from "../../../images/khaled_1.png"
 import admin2 from "../../../images/khaled_2.png"
 import { db } from "../../../App";
 
-const bloodInfo = [{
-    name: '',
-    
-}, {
-    
-}]
 
 
 const Home = () => {
@@ -71,13 +64,6 @@ const Home = () => {
 
     }, [])
     
-    // useEffect(() => {
-    //     const getData = async () => {
-           
-    //     }
-    //     getData();
-    //     }, [])
-    // console.log(members)
     
 
     return (

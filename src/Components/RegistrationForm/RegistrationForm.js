@@ -100,7 +100,7 @@ const RegistrationForm = () => {
                 <div className="row">
                     <div className="col col-12">
                         <h6>NID Number</h6>
-                        <input name="nid" onChange={(e) => handleInput(e)} type="number" class="form-control border border-primary" placeholder="Valid Email Id" />
+                        <input name="nid" onChange={(e) => handleInput(e)} type="number" class="form-control border border-primary" placeholder="Valid NID Number" />
                     </div>
                     <div class="col col-6  input-group my-3  d-flex flex-column">
                         <div>
@@ -125,7 +125,7 @@ const RegistrationForm = () => {
                 </div>
             </div>
 
-            <div className="row container-xxl row-cols-3 g-2 my-4 px-3">
+            <div className="row container-xxl row-cols-3 gy-2 my-4 px-3">
                 <div className="col">
                     <h6>Father's Name</h6>
                     <input name="fatherName" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="Name of Father" />
@@ -138,13 +138,23 @@ const RegistrationForm = () => {
                     <h6>Educational Qualification</h6>
                     <input name="education" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="Class or Degree" />
                 </div>
-                <div className="col">
+                <div className="col py-3  ">
                     <h6>Present Address</h6>
-                    <input name="presentAdd" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="village, Upozila, District, Division" />
+                    <h6>Division</h6>
+                    <input name="presentAddDivision" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary mb-2" placeholder="Division" />
+                    <h6>District</h6>
+                    <input name="presentAddDistrict" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="District" />
+                    <h6>Thana</h6>
+                    <input name="presentAddThana" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="Thana" />
                 </div>
-                <div className="col">
+                <div className="col py-3 ">
                     <h6>Permanent Address</h6>
-                    <input name="permanentAdd" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="village, Upozila, District, Division" />
+                    <h6>Division</h6>
+                    <input name="permanentAddDivision" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary mb-2" placeholder="Division" />
+                    <h6>District</h6>
+                    <input name="permanentAddDistrict" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="District" />
+                    <h6>Thana</h6>
+                    <input name="permanentAddThana" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="Thana" />
                 </div>
                 <div className="col">
                     <h6>Signature</h6>
@@ -181,11 +191,11 @@ const RegistrationForm = () => {
                 <div className="row container-xxl row-cols-3 g-2 my-4 px-3">
                     <div className="col">
                         <h6>Contact No</h6>
-                        <input name="nomContactNo" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="01XXX-XX XX XX" />
+                        <input name="nomContactNo" onChange={(e) => handleInput(e)} type="number" class="form-control border border-primary" placeholder="01XXX-XX XX XX" />
                     </div>
                     <div className="col">
                         <h6>NID Number</h6>
-                        <input name="nomNID" onChange={(e) => handleInput(e)} type="text" class="form-control border border-primary" placeholder="10 digit NID" />
+                        <input name="nomNID" onChange={(e) => handleInput(e)} type="number" class="form-control border border-primary" placeholder="10 digit NID" />
                     </div>
                     <div className="col">
                         <h6>Father's Name</h6>

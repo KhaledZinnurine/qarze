@@ -13,6 +13,8 @@ import Navbar from './Components/HomePage/Navbar/Navbar';
 import Footer from './Components/HomePage/Footer/Footer';
 import BloodDonation from "./Components/BloodDonation/BloodDonation";
 import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
+import Gallery from './Components/Gallery/Gallery';
+import About from './Components/About/About';
 export const UserContext = createContext();
 
 const auth = getAuth(app);
@@ -30,6 +32,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/register" element={<RegistrationForm />} />
           <Route path="/blooddonate" element={<BloodDonation />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/about" element={<About />} />
         </Routes>
 
 
