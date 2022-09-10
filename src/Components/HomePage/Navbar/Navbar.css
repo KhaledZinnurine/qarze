@@ -3,5 +3,5 @@
 }
 .display_list{
     display: flex;
-    justify-content:space-between !important;
+    justify-content: space-evenly !important;
 }

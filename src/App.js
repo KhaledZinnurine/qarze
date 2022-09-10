@@ -21,6 +21,7 @@ const auth = getAuth(app);
 export const db = getFirestore(app)
 
 function App() {
+  
   const [user, setUser] = useState({});
   return (
     <UserContext.Provider value={[user, setUser]}>

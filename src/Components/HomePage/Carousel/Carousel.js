@@ -1,8 +1,8 @@
 import "./Carousel.css";
 import React from "react";
-import image1 from "../../../images/image1.jpg";
-import image2 from "../../../images/image2.jpg";
-import image3 from "../../../images/image3.jpg";
+import image1 from "../../../images/carousel/banner1.jpg";
+import image2 from "../../../images/carousel/banner2.jpg";
+import image3 from "../../../images/carousel/banner3.jpg";
 const Carousel = () => {
     return (
         <div className="py-5 px-2">

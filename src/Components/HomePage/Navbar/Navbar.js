@@ -70,39 +70,39 @@ const Navbar = () => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 {/* <a class="navbar-brand" to=" ">Qarze Hasana</a> */}
-                <Link class="navbar-brand" to="/">Qarze Hasana</Link>
+                <Link class="navbar-brand fw-bold fs-3" to="/">Qarze Hasana</Link>
                 
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="d-flex justify-content-evenly navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0   display_list">
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/">Home</Link>
+                            <Link class="nav-link active fs-4 " aria-current="page" to="/">Home</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/admin">Admin</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/admin">Admin</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to='/register'>Membership</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to='/register'>Membership</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/qarze">Qarze Hasana</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/qarze">Qarze Hasana</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/donate">Donation</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/donate">Donation</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/blooddonate">Blood Donation</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/blooddonate">Blood Donation</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/gallery">Gallery</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/gallery">Gallery</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="about">About</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="about">About</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to="/contact">Contact</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/contact">Contact</Link>
                         </li>
-                        <li class="nav-item">
-                            <Link class="nav-link active" aria-current="page" to=" " onClick={isLoggedIn ? googleSignOut : googleLogIn}> {isLoggedIn ? <img style={{ borderRadius: 20, height: 20, width: 20 }} src={userInfo?.photoURL} /> : "Login"}</Link>
+                        <li class="nav-item ">
+                            <Link class="nav-link active fs-4" aria-current="page" to=" " onClick={isLoggedIn ? googleSignOut : googleLogIn}> {isLoggedIn ? <img style={{ borderRadius: 20, height: 50, width: 50 }} src={userInfo?.photoURL} /> : "Login"}</Link>
 
                         </li>
 
