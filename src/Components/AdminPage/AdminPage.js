@@ -1,6 +1,6 @@
 import "./AdminPage.css";
 import React, { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../App";
 
 const AdminPage = () => {
@@ -12,7 +12,7 @@ const AdminPage = () => {
             let list = []
             querySnapshot.forEach((doc) => {
                 // console.log(`${doc.id} => ${doc.data()}`, doc);
-                list.push(doc.data())
+                list.push({ ...doc.data(), id: doc.id })
             });
             setQarzeReqInfo(list)
         }
@@ -26,20 +26,27 @@ const AdminPage = () => {
             // console.log(querySnapshot)
             let list2 = []
             querySnapshot.forEach((doc) => {
-                // console.log(`${doc.id} => ${doc.data()}`, doc);
-                list2.push(doc.data())
+                console.log(`${doc.id} => ${doc.data()}`, doc);
+                list2.push({ ...doc.data(), id: doc.id })
             });
+            console.log(list2)
             setMemberInfo(list2)
         }
         getData()
     }, [])
+
+    const handleDelete = async (data) => {
+        console.log(data.id)
+        const deleteResponse = await deleteDoc(doc(db, "qarzeRequest", data.id));
+        console.log(deleteResponse)
+    }
 
     return (
         <div>
             <div className=" container border border-primary rounded  my-2  bg-primary">
                 <h1 className="text-center">This is Confidential Administration Page</h1>
             </div>
-            
+
             {/*List of Qarze Request receiving from user. */}
             <div className='m-3 p-2'>
                 <h4>For More details, Click the link.</h4>
@@ -54,20 +61,31 @@ const AdminPage = () => {
                             <th scope="col">Email</th>
                             <th scope="col">Qarze Type</th>
                             <th scope="col">Amount</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         {
                             qarzeReqInfo.map(doner =>
-                                <tr key={doner._id}>
-                                    <th scope="row"> {doner.name} </th>
-                                    <td>{doner.contactNo} </td>
-                                    <td>{doner.nid}</td>
-                                    <td>{doner.email}</td>
-                                    <td>{doner.type}</td>
-                                    <td>{doner.amount}</td>
-                                </tr>
+                            {
+                                console.log(doner)
+                                return (
+                                    <tr key={doner.id}>
+                                        <th scope="row"> {doner.name} </th>
+                                        <td>{doner.contactNo} </td>
+                                        <td>{doner.nid}</td>
+                                        <td>{doner.email}</td>
+                                        <td>{doner.type}</td>
+                                        <td>{doner.amount}</td>
+                                        <td>
+                                            <button onClick={() => handleDelete({
+                                                id: doner.id
+                                            })}>Delete</button>
+                                        </td>
+                                    </tr>
+                                )
+                                }
                             )
                         }
                     </tbody>
@@ -114,10 +132,10 @@ const AdminPage = () => {
 
 
 
-            
+
         </div>
-            
+
     );
 };
 
- export default AdminPage;
+export default AdminPage;

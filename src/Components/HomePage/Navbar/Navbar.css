@@ -5,3 +5,7 @@
     display: flex;
     justify-content: space-evenly !important;
 }
+ul li:hover{
+    text-decoration-color: white;
+    text-decoration: underline;
+}
