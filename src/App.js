@@ -1,8 +1,8 @@
 import './App.css';
-import React from "react";
+import React, { useEffect } from "react";
 import app from './firebase.init';
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -23,8 +23,9 @@ const auth = getAuth(app);
 export const db = getFirestore(app)
 
 function App() {
-  
+
   const [user, setUser] = useState({});
+  
   return (
     <UserContext.Provider value={[user, setUser]}>
       <Router>

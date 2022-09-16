@@ -6,6 +6,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/
 import app from "../../../firebase.init";
 import { db, UserContext } from "../../../App";
 import { collection, getDocs } from "firebase/firestore";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);
@@ -16,16 +17,18 @@ const Navbar = () => {
 
     const [userInfo, setUserInfo] = useState({})
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isAdmin, setIsAdmin] = useState(false)
+    const [matched, setMatched] = useState([])
     const [admins, setAdmins] = useState([])
-    const [isAdmin, setIsAdmin] = useState(true)
 
     useEffect(() => {
         let item = JSON.parse(sessionStorage.getItem("userinfo"));
         item?.uid && setUserInfo(item)
-        // console.log(item)
+        console.log(item)
         item?.uid && setIsLoggedIn(true)
-    }, [])
+        setTimeout(() => { setIsAdmin(item?.admin) },2000)
     
+    }, [])
 
     useEffect(() => {
         const getData = async () => {
@@ -37,14 +40,12 @@ const Navbar = () => {
                 list3.push(doc.data())
             });
             setAdmins(list3)
+            console.log("admins-->", list3)
 
-            const isAdmin = list3.filter(data => data.email === userInfo.email)
-            setIsAdmin(isAdmin.length < 0)
-           
+
         }
         getData();
-
-    }, [])
+},[])
     console.log(isAdmin)
 
     const googleLogIn = () => {
@@ -60,7 +61,15 @@ const Navbar = () => {
                 setUserInfo(user)
                 setloggedUserInfo(user)
                 setIsLoggedIn(true)
-                sessionStorage.setItem("userinfo", JSON.stringify(user));
+
+                setTimeout(() => {
+                    const checkAdmin = admins.filter((admin) => admin.email === user.email)
+                    console.log("filtered admin-->", checkAdmin)
+                   
+                    setIsAdmin(checkAdmin.length > 0)
+                    sessionStorage.setItem("userinfo", JSON.stringify({ ...user, admin: checkAdmin.length > 0 }));
+                }, 3000)
+                
                 // ...
             }).catch((error) => {
                 // Handle Errors here.
@@ -85,6 +94,7 @@ const Navbar = () => {
             setUserInfo({})
             setIsLoggedIn(false)
             setloggedUserInfo({})
+            setIsAdmin(false)
             sessionStorage.clear();
         }).catch((error) => {
             // An error happened.
@@ -100,7 +110,7 @@ const Navbar = () => {
                 </button>
                 {/* <a class="navbar-brand" to=" ">Qarze Hasana</a> */}
                 <Link class="navbar-brand fw-bold fs-3" to="/">Qarze Hasana</Link>
-                
+
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0   display_list">
                         <li class="nav-item">
@@ -108,14 +118,14 @@ const Navbar = () => {
                         </li>
                         {
                             isAdmin && <>
-                            <li class="nav-item">
-                                <Link class="nav-link active fs-4" aria-current="page" to="/admin">Admin</Link>
+                                <li class="nav-item">
+                                    <Link class="nav-link active fs-4" aria-current="page" to="/admin">Admin</Link>
                                 </li>
                             </>
                         }
                         {
                             isLoggedIn && <>
-                                
+
                                 <li class="nav-item">
                                     <Link class="nav-link active fs-4" aria-current="page" to='/register'>Membership</Link>
                                 </li>
@@ -129,11 +139,11 @@ const Navbar = () => {
                                     <Link class="nav-link active fs-4" aria-current="page" to="/blooddonate">Blood_Donation</Link>
                                 </li>
                             </>
-                            
+
                         }
 
-                        
-                       
+
+
                         <li class="nav-item">
                             <Link class="nav-link active fs-4" aria-current="page" to="/gallery">Gallery</Link>
                         </li>

@@ -1,6 +1,7 @@
+# 1703026 CSE 3200 Project
 # Netlify Live App link
-[qarze-hasana-live-link](https://reactjs.org/)- Click this link to use this website.
-# Netlify Live App link
+[qarze-hasana-live-link](https://qarze-hasana.web.app/)- Click this link to use this website.
+# Github Source Code Link
 [source-code-github link](https://github.com/KhaledZinnurine/qarze/tree/main/src)- source code Link.
 
 # QARZE HASANA FOUNDAION
