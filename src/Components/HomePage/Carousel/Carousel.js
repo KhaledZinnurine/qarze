@@ -16,21 +16,21 @@ const Carousel = () => {
                     <div class="carousel-item active" data-bs-interval="1000">
                         <img src={image2} class="d-block w-100" alt="..."/>
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>First slide label</h5>
+                                <h5>Date Packing</h5>
                                 <p>Some representative placeholder content for the first slide.</p>
                             </div>
                     </div>
                     <div class="carousel-item" data-bs-interval="2000" id="item-2">
                         <img src={image1} class="d-block w-100" alt="..."/>
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Second slide label</h5>
+                                <h5>Helping Flood Affected People</h5>
                                 <p>Some representative placeholder content for the second slide.</p>
                             </div>
                     </div>
                     <div class="carousel-item">
                         <img src={image3} class="d-block w-100" alt="..."/>
                             <div class="carousel-caption d-none d-md-block">
-                                <h5>Third slide label</h5>
+                                <h5>Van Handover</h5>
                                 <p>Some representative placeholder content for the third slide.</p>
                             </div>
                     </div>

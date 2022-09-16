@@ -84,13 +84,13 @@ const Navbar = () => {
                             <Link class="nav-link active fs-4" aria-current="page" to='/register'>Membership</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active fs-4" aria-current="page" to="/qarze">Qarze Hasana</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/qarze">Qarze_Req</Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link active fs-4" aria-current="page" to="/donate">Donation</Link>
                         </li>
                         <li class="nav-item">
-                            <Link class="nav-link active fs-4" aria-current="page" to="/blooddonate">Blood Donation</Link>
+                            <Link class="nav-link active fs-4" aria-current="page" to="/blooddonate">Blood_Donation</Link>
                         </li>
                         <li class="nav-item">
                             <Link class="nav-link active fs-4" aria-current="page" to="/gallery">Gallery</Link>

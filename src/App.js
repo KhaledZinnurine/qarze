@@ -15,6 +15,8 @@ import BloodDonation from "./Components/BloodDonation/BloodDonation";
 import RegistrationForm from './Components/RegistrationForm/RegistrationForm';
 import Gallery from './Components/Gallery/Gallery';
 import About from './Components/About/About';
+import QarzeRequest from './Components/QarzeRequest/QarzeRequest';
+import AdminPage from './Components/AdminPage/AdminPage';
 export const UserContext = createContext();
 
 const auth = getAuth(app);
@@ -35,6 +37,8 @@ function App() {
           <Route path="/blooddonate" element={<BloodDonation />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
+          <Route path="/qarze" element={<QarzeRequest />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
 
 

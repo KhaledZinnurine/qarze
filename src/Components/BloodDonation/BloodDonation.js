@@ -112,7 +112,7 @@ const BloodDonation = () => {
                             <th scope="col">Name</th>
                             <th scope="col">Blood Group</th>
                             <th scope="col">Contact No</th>
-                            <th scope="col">Add</th>
+                            <th scope="col">Address</th>
                         </tr>
                     </thead>
                     <tbody>
