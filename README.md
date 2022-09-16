@@ -1,18 +1,18 @@
 # 1703026 CSE 3200 Project
-# Netlify Live App link
+## Netlify Live App link
 [qarze-hasana-live-link](https://qarze-hasana.web.app/)- Click this link to use this website.
-# Github Source Code Link
+## Github Source Code Link
 [source-code-github link](https://github.com/KhaledZinnurine/qarze/tree/main/src)- source code Link.
 
-# QARZE HASANA FOUNDAION
+## QARZE HASANA FOUNDAION
 This is a web application for Charity Purpose and financial support by giving qarze hasana.
 
-# Technology Used
+## Technology Used
 1. [React.js](https://reactjs.org/)- for front end development.
 2. [Bootstrap 5](https://getbootstrap.com/docs/5.0/getting-started/introduction/)- for front end development.
 3. [Firbase](https://firebase.google.com/)- evented I/O for backend
 
-# Instruction for Use
+## Instruction for Use
 Here, three types of interface is given.
 1. Visitor: visitor can see the organizations
     * Home Page/Landing Page
@@ -27,7 +27,7 @@ Here, three types of interface is given.
 
 3. Admin: Admin Page is only visible by admins. Admins can update databases(delete, insert, or any cell updation)
 
-# Features Of Website
+## Features Of Website
 1. Home Page
     This Page is organized by a carousel, Admin information, About Foundation, and dynamic Count of Number of user, total number of student Qarze, Number of General Qarze, No of Blood Donation via this website. Header, Footer and Title are the generic component of this website.
 2. Admin Page
